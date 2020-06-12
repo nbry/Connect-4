@@ -42,7 +42,7 @@ function makeHtmlBoard() {
     headCell.setAttribute("id", x);
     top.append(headCell);
   }
-  
+
   htmlBoard.append(top);
 
   // Creates actual game board. No click event
@@ -83,7 +83,6 @@ function placeInTable(y, x) {
 /** endGame: announce game end */
 
 function endGame(msg) {
-  // TODO: pop up alert message
   alert(msg);
 }
 
@@ -106,6 +105,7 @@ function handleClick(evt) {
 
   // check for win
   if (checkForWin()) {
+    document.getElementById('column-top').removeEventListener('click', handleClick);
     return endGame(`Player ${currPlayer} won!`);
   }
 
@@ -118,6 +118,12 @@ function handleClick(evt) {
   // switch players
   // TODO: switch currPlayer 1 <-> 2
   currPlayer = currPlayer === 1 ? 2 : 1;
+  let turnIdentifier = document.querySelector('#turn').childNodes[1];
+  if (currPlayer === 1) {
+    turnIdentifier.innerText = "Red";
+  } else {
+    turnIdentifier.innerText = "Blue";
+  }
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
