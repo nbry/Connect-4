@@ -130,16 +130,41 @@ function checkForWin() {
   // Loops over entire board. 
   // Checks for any four adjacent cells on the board. 
   // Checks for win conditions for any 4 adjacent cells
+  // Highlights the 4 adjacent cells causing the win condition
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
       let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
       let vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
       let diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
       let diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
-
-      if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
+  
+      if (_win(horiz)){
+        horiz.forEach((set) =>{
+          document.getElementById(`${set[0]}-${set[1]}`).style.backgroundColor = '#08FF0F';
+        });
         return true;
-      }
+      };
+
+      if (_win(vert)){
+        vert.forEach((set) =>{
+          document.getElementById(`${set[0]}-${set[1]}`).style.backgroundColor = '#08FF0F';
+        });
+        return true;
+      };
+
+      if (_win(diagDR)){
+        diagDR.forEach((set) =>{
+          document.getElementById(`${set[0]}-${set[1]}`).style.backgroundColor = '#08FF0F';
+        });
+        return true;
+      };
+
+      if (_win(diagDL)) {
+        diagDL.forEach((set) =>{
+          document.getElementById(`${set[0]}-${set[1]}`).style.backgroundColor = '#08FF0F';
+        });
+        return true;
+      };
     }
   }
 }
