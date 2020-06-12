@@ -33,15 +33,16 @@ function makeHtmlBoard() {
   const htmlBoard = document.getElementById('board');
 
   // Creates clickable top row
-  let top = document.createElement("tr");
+  const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
 
   for (let x = 0; x < WIDTH; x++) {
-    let headCell = document.createElement("td");
+    const headCell = document.createElement("td");
     headCell.setAttribute("id", x);
     top.append(headCell);
   }
+  
   htmlBoard.append(top);
 
   // Creates actual game board. No click event
