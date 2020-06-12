@@ -10,6 +10,7 @@ const HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
 const board = []; // array of rows, each row is array of cells  (board[y][x])
+const pieceCounter = []; //when pieceCounter.length = WIDTH * HEIGHT, board is full. 
 
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
@@ -18,11 +19,7 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
   for (let y = 0; y < HEIGHT; y++) {
-    let row = [];
-    for (let x = 0; x < WIDTH; x++) {
-      row.push(null);
-    };
-    board.push(row);
+    board.push([...new Array(WIDTH)]);
   }
 }
 
@@ -78,24 +75,25 @@ function placeInTable(y, x) {
 
   const placement = document.getElementById(`${y}-${x}`);
   placement.append(nextPiece);
+
+  pieceCounter.push('turn');
 }
 
 /** endGame: announce game end */
-
 function endGame(msg) {
   alert(msg);
 }
 
 /** handleClick: handle click of column top to play piece */
-
 function handleClick(evt) {
+  
   // get x from ID of clicked cell
   const x = +evt.target.id;
 
   // get next spot in column (if none, ignore click)
   const y = findSpotForCol(x);
   if (y === null) {
-    return;
+    return; //stop the function here, if y is null (i.e. if column is full)
   }
 
   // place piece in board and add to HTML table
@@ -111,7 +109,7 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
-  if (board.every((row) => row.every((cell) => cell))) {
+  if (pieceCounter.length === WIDTH * HEIGHT) {
     return endGame('Tie!');
   }
 
