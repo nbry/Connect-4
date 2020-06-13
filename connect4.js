@@ -87,12 +87,13 @@ function handleClick(evt) {
   // check for Win. Remove ability to click board.
   if (checkForWin()) {
     document.getElementById('column-top').removeEventListener('click', handleClick);
-    if (currPlayer = 1) {
+    
+    if (currPlayer === 1) {
       document.querySelector('h3').innerText = "PLAYER 1 WINS!";
       document.querySelector('h3').style.color = "red";
       return;
     }
-    if (currPlayer = 2) {
+    if (currPlayer === 2) {
       document.querySelector('h3').innerText = "PLAYER 2 WINS!";
       document.querySelector('h3').style.color = "blue";
       return;
@@ -102,7 +103,7 @@ function handleClick(evt) {
   // check for tie. Comes after check for win. If there is no win, and board is full: tie
   if (pieceCounter.length === WIDTH * HEIGHT) {
     document.querySelector('h3').innerText = "TIE";
-    document.querySelector('h3').style.color = "purple";
+    document.querySelector('h3').style.color = "#f215bc";
     return;
   }
 
