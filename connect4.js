@@ -1,4 +1,4 @@
-let currPlayer = 1;  
+let currPlayer = 1;
 const WIDTH = 7;
 const HEIGHT = 6;
 const board = [];  // array of rows, each row is array of cells  (board[y][x])
@@ -9,7 +9,7 @@ const pieceCounter = [];  //when pieceCounter.length = WIDTH * HEIGHT, board is 
 // piece will be represented in the array matrix as a number... 1 or 2. 
 
 function makeBoard() {
-    for (let y = 0; y < HEIGHT; y++) {
+  for (let y = 0; y < HEIGHT; y++) {
     board.push([...new Array(WIDTH)]);
   }
 }
@@ -66,11 +66,6 @@ function placeInTable(y, x) {
   pieceCounter.push('turn'); // +1 to a counter that monitors the number of pieces on the board. 
 }
 
-/** endGame: announce game end */
-function endGame(msg) {
-  // alert(msg);
-}
-
 function handleClick(evt) {
 
   // get x from ID of clicked cell
@@ -92,19 +87,23 @@ function handleClick(evt) {
   // check for Win. Remove ability to click board.
   if (checkForWin()) {
     document.getElementById('column-top').removeEventListener('click', handleClick);
-    if (currPlayer = 1){
-      document.querySelector('h3').innerText = "PLAYER 1 WINS!"
+    if (currPlayer = 1) {
+      document.querySelector('h3').innerText = "PLAYER 1 WINS!";
       document.querySelector('h3').style.color = "red";
-    } else {
-      document.querySelector('h3').innerText = "PLAYER 2 WINS!"
+      return;
+    }
+    if (currPlayer = 2) {
+      document.querySelector('h3').innerText = "PLAYER 2 WINS!";
       document.querySelector('h3').style.color = "blue";
+      return;
     };
-    return endGame(`Player ${currPlayer} won!`);
   }
 
   // check for tie. Comes after check for win. If there is no win, and board is full: tie
   if (pieceCounter.length === WIDTH * HEIGHT) {
-    return endGame('Tie!');
+    document.querySelector('h3').innerText = "TIE";
+    document.querySelector('h3').style.color = "purple";
+    return;
   }
 
   // switch players
@@ -147,30 +146,30 @@ function checkForWin() {
       let vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
       let diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
       let diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
-  
-      if (_win(horiz)){
-        horiz.forEach((set) =>{
+
+      if (_win(horiz)) {
+        horiz.forEach((set) => {
           document.getElementById(`${set[0]}-${set[1]}`).style.backgroundColor = '#08FF0F';
         });
         return true;
       };
 
-      if (_win(vert)){
-        vert.forEach((set) =>{
+      if (_win(vert)) {
+        vert.forEach((set) => {
           document.getElementById(`${set[0]}-${set[1]}`).style.backgroundColor = '#08FF0F';
         });
         return true;
       };
 
-      if (_win(diagDR)){
-        diagDR.forEach((set) =>{
+      if (_win(diagDR)) {
+        diagDR.forEach((set) => {
           document.getElementById(`${set[0]}-${set[1]}`).style.backgroundColor = '#08FF0F';
         });
         return true;
       };
 
       if (_win(diagDL)) {
-        diagDL.forEach((set) =>{
+        diagDL.forEach((set) => {
           document.getElementById(`${set[0]}-${set[1]}`).style.backgroundColor = '#08FF0F';
         });
         return true;

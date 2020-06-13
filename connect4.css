@@ -6,6 +6,15 @@
   border: solid 1px #666;
 }
 
+button {
+  margin-bottom: 20px;
+  border-radius: 3px;
+  font-family: helvetica;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px black;
+  background-color: rgb(206, 89, 89);
+}
 /* pieces are div within game table cells: draw as colored circles */
 .player {
   color: red;
@@ -17,7 +26,7 @@
   width: 80%;
   height: 80%;
   border-radius: 50%;
-  animation-duration: 100ms;
+  animation-duration: 120ms;
   animation-name: slidein;
 }
 
@@ -37,10 +46,6 @@
 .p2 {
   background-color:blue;
 }
-
-/* TODO: make pieces red/blue,  depending on player 1/2 piece */
-
-/* column-top is table row of clickable areas for each column */
 
 #column-top td {
   border: dashed 1px rgb(129, 129, 129);

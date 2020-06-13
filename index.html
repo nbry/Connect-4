@@ -1,19 +1,23 @@
 <!doctype html>
+
 <head>
   <title>Connect 4</title>
   <link href="connect4.css" rel="stylesheet">
 </head>
+
 <body>
-<h1>Connect 4</h1>
-<h3 id=turn>Turn: <span class="player">Player 1</span></h3>
+  <h1>Connect 4</h1>
+  <h3 id=turn>Turn: <span class="player">Player 1</span></h3>
+  <button onClick="window.location.reload();">New Game</button>
 
-<div id="game">
-  <table id="board"></table>
-</div>
+    <div id="game">
+      <table id="board"></table>
+    </div>
 
-<div id="who-won"></div>
+    <div id="who-won"></div>
 
-<script src="connect4.js"></script>
+    <script src="connect4.js"></script>
 
 </body>
+
 </html>
