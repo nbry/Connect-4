@@ -68,7 +68,7 @@ function placeInTable(y, x) {
 
 /** endGame: announce game end */
 function endGame(msg) {
-  alert(msg);
+  // alert(msg);
 }
 
 function handleClick(evt) {
@@ -89,9 +89,16 @@ function handleClick(evt) {
   // Places piece on HTMLboard. 
   placeInTable(y, x);
 
-  // check for win. Remove ability to click board.
+  // check for Win. Remove ability to click board.
   if (checkForWin()) {
     document.getElementById('column-top').removeEventListener('click', handleClick);
+    if (currPlayer = 1){
+      document.querySelector('h3').innerText = "PLAYER 1 WINS!"
+      document.querySelector('h3').style.color = "red";
+    } else {
+      document.querySelector('h3').innerText = "PLAYER 2 WINS!"
+      document.querySelector('h3').style.color = "blue";
+    };
     return endGame(`Player ${currPlayer} won!`);
   }
 
@@ -104,9 +111,12 @@ function handleClick(evt) {
   currPlayer = currPlayer === 1 ? 2 : 1;
   let turnIdentifier = document.querySelector('#turn').childNodes[1];
   if (currPlayer === 1) {
-    turnIdentifier.innerText = "Red";
+    turnIdentifier.innerText = "Player 1";
+    turnIdentifier.style.color = "red";
+
   } else {
-    turnIdentifier.innerText = "Blue";
+    turnIdentifier.innerText = "Player 2";
+    turnIdentifier.style.color = "blue";
   }
 }
 

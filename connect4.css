@@ -7,6 +7,9 @@
 }
 
 /* pieces are div within game table cells: draw as colored circles */
+.player {
+  color: red;
+}
 
 .piece {
   /* TODO: make into circles */
@@ -14,19 +17,16 @@
   width: 80%;
   height: 80%;
   border-radius: 50%;
-  animation-duration: 1s;
+  animation-duration: 100ms;
   animation-name: slidein;
 }
 
-@keyframes slidein {
-  from {
-    margin-bottom: 100%;
-    width: 100%; 
-  }
-
-  to {
-    margin-bottom: 0%;
-    width: 100%;
+@keyframes slidein{
+	from {
+		transform: translateY(-300px);
+	}
+	to {
+		transform: translateY(0);
   }
 }
 
@@ -43,9 +43,12 @@
 /* column-top is table row of clickable areas for each column */
 
 #column-top td {
-  border: dashed 1px lightgray;
+  border: dashed 1px rgb(129, 129, 129);
+  border-radius: 10px;
+  background-color: rgb(215, 218, 221);
 }
 
 #column-top td:hover {
   background-color: gold;
+  transition: 100ms;
 }
