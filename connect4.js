@@ -10,7 +10,7 @@ const pieceCounter = [];  //when pieceCounter.length = WIDTH * HEIGHT, board is 
 
 function makeBoard() {
   for (let y = 0; y < HEIGHT; y++) {
-    board.push([...new Array(WIDTH)]);
+    board.push([...new Array(WIDTH)]);      
   }
 }
 
